@@ -1,0 +1,278 @@
+header {
+    padding: 0.5em; 
+    color: white;
+    background-color: #cbbcb2;
+    clear: left;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+ footer {
+    padding: 0.5em; 
+    color: white;
+    background-color:  #cbbcb2;
+    clear: left;
+	text-align: center;
+}
+h1.header {
+   padding: 10px;
+    margin: 0;
+    font-size: 50px;
+	    background-color: #574c46;
+}
+
+div#user
+{
+    float: right;
+    background-color: #574c46;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid white;
+}
+
+aside {
+    float: left;
+    width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+section {
+    margin-left: 190px;
+    border-left: 1px solid gray;
+    padding: 1em;
+}
+ul {
+    float:left;
+    width:100%; /* A menü az alatta levő szövegtől elválik, birtokolja a teljes vízszintes sávját. */
+    padding:0;
+    margin:0;
+    list-style-type:none;
+      background-color: #574c46;
+	  color: white;
+}        
+nav ul li a {
+		color: white !important;
+	text-decoration:none !important;
+    float:left;
+    width:8em; /* Fix szélességű gombok érhetők el. Érdemes azonban vigyázni ezzel a módszerrel, mert ha a szöveg nem fér ki, a dizájn szétesik. */
+     /* Ne legyen aláhúzva a link. */
+    background-color:#574c46;
+    padding:0.2em 0.6em;
+    border-right:1px solid white;
+
+	font-weight: bold;
+	font-size: 18px;
+}
+nav ul li a.selected{
+    background-color:  #cebdad;
+	color: white;
+	font-weight: bold;
+		font-size: 18px;
+}
+nav ul li a:hover { background-color:#cebdad;} /* Az egérkurzorra színváltással reagál a menüpont. */
+li { display:inline; } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé kerüljenek. */
+
+#welcome {
+    position: relative;
+}
+
+#welcome > img, .overlay-text {
+    position: absolute;
+}
+.kulso
+{
+	position: relative;
+	/* margin: 10px; */
+}
+.also
+{
+	position: absolute;
+bottom: 20px;
+	left:30px;
+	right:30px;
+	background-color: #cbbcb2;
+	text-align: center;
+	color: #574c46;
+	font-weight: bold;
+	font-size: 25px;
+	padding: 5px;
+	max-height: 50px;
+	border-radius: 10px;
+	
+
+}
+.container-fluid
+{
+	 background-color: #cbbcb2;
+}
+.bekezdes
+{
+	margin: 20px;
+	font-size: 15px;
+	color: #574c46;
+}
+.d-block.w-100
+{
+border: 3px solid #574c46;
+
+}
+ .d-block.w-100.fel
+{
+	max-width: 350px;
+	border: 2px solid #574c46;
+	border-radius: 1000px;
+	margin-left: 10px;
+}
+.fagyi, .egyéb
+{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	margin: 10px;
+}
+.szoveg
+{
+	color: #574c46;
+	font-size: 15px;
+	padding: 10px;
+	
+}
+.süti
+{display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+}
+@media only screen and (max-width: 500px) {
+	.also
+	{
+		font-size: 15px;
+		padding: 5px;
+	}
+}
+.hiroldal
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.sor
+{
+	padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+#gomb
+{
+	    color: white;
+    background-color: #574c46;
+    font-size: 20px;
+    border-style: outset;
+    border-radius: 10px;
+    width: 300px;
+  box-shadow: 5px 10px 8px #888888;
+}
+#nev
+{
+	  width: 500px;
+	  height: 50px;
+}
+.nevresz
+{
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+    align-items: stretch;
+	    margin: 10px;
+}
+.tartalom {
+  
+    padding: 5px;
+    color: #574c46;
+    background-color: #e4e4e4;
+}
+
+.tartalom2
+{
+    background-color: white;
+    padding: 20px;
+}
+.komigomb
+{
+	float: right;
+    margin-right: 10px;
+    width: 150px;
+    padding: 10px;
+    margin-left: 5px;
+    font-size: 20px;
+    background-color: #cbbcb2;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.tuntes
+{
+display: none;
+}
+.fej
+{
+text-align: center;
+    padding: 50px 20px;
+    margin-top: 10px;
+}
+legend {
+  background-color: #574c46;
+  color: white;
+  padding: 5px 10px !important; 
+}
+fieldset {
+  background-color: #e2e1df;
+      padding: 10px !important;
+}
+.hir
+{
+	 background-color: #574c46;
+	color: white;
+  padding: 0 0 0 10px;
+  font-size: 30px;
+  margin-bottom: 0;
+  
+}
+.hiroldal2
+{
+	margin-bottom:10px;
+}
+.kiir
+{
+	    padding: 10px;
+    background-color: #574c46;
+    color: white;
+    font-weight: bold;
+}
+.komm1
+{
+	background-color: #e4e4e4;
+    border: 1px solid white;
+	padding: 10px;
+}
+
+table .ui-datepicker-calendar {
+    display: none;
+}
