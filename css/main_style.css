@@ -1,7 +1,7 @@
 header {
     padding: 0.5em; 
     color: white;
-    background-color: #cbbcb2;
+    background-color: white;
     clear: left;
 	font-size: 20px;
 	font-weight: bold;
@@ -10,7 +10,7 @@ header {
  footer {
     padding: 0.5em; 
     color: white;
-    background-color:  #cbbcb2;
+    background-color:  #158FAD;
     clear: left;
 	text-align: center;
 }
@@ -18,13 +18,13 @@ h1.header {
    padding: 10px;
     margin: 0;
     font-size: 50px;
-	    background-color: #574c46;
+	    background-color: #158FAD;
 }
 
 div#user
 {
     float: right;
-    background-color: #574c46;
+    background-color: #158FAD;
     color: white;
     font-weight: bold;
     width: 100%;
@@ -49,7 +49,7 @@ ul {
     padding:0;
     margin:0;
     list-style-type:none;
-      background-color: #574c46;
+      background-color: #158FAD;
 	  color: white;
 }        
 nav ul li a {
@@ -58,7 +58,7 @@ nav ul li a {
     float:left;
     width:8em; /* Fix szélességű gombok érhetők el. Érdemes azonban vigyázni ezzel a módszerrel, mert ha a szöveg nem fér ki, a dizájn szétesik. */
      /* Ne legyen aláhúzva a link. */
-    background-color:#574c46;
+    background-color:#158FAD;
     padding:0.2em 0.6em;
     border-right:1px solid white;
 
@@ -66,12 +66,14 @@ nav ul li a {
 	font-size: 18px;
 }
 nav ul li a.selected{
-    background-color:  #cebdad;
-	color: white;
+	
+	color: #158FAD !important;
+    background-color:  white;
+	
 	font-weight: bold;
 		font-size: 18px;
 }
-nav ul li a:hover { background-color:#cebdad;} /* Az egérkurzorra színváltással reagál a menüpont. */
+nav ul li a:hover { background-color:white; color:#158FAD !important;} /* Az egérkurzorra színváltással reagál a menüpont. */
 li { display:inline; } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé kerüljenek. */
 
 #welcome {
@@ -92,9 +94,9 @@ li { display:inline; } /* Ez a sor oldja meg, hogy a menüpontok egymás mellé 
 bottom: 20px;
 	left:30px;
 	right:30px;
-	background-color: #cbbcb2;
+	background-color: white;
 	text-align: center;
-	color: #574c46;
+	color: #158FAD;
 	font-weight: bold;
 	font-size: 25px;
 	padding: 5px;
@@ -105,25 +107,25 @@ bottom: 20px;
 }
 .container-fluid
 {
-	 background-color: #cbbcb2;
+	 background-color: white;
 }
 .bekezdes
 {
 	margin: 20px;
 	font-size: 15px;
-	color: #574c46;
+	color: #158FAD;
 }
 .d-block.w-100
 {
-border: 3px solid #574c46;
+border: 3px solid #158FAD;
 
 }
  .d-block.w-100.fel
 {
 	max-width: 350px;
-	border: 2px solid #574c46;
+	border: 2px solid #158FAD;
 	border-radius: 1000px;
-	margin-left: 10px;
+	margin-bottom: 10px;
 }
 .fagyi, .egyéb
 {
@@ -137,7 +139,7 @@ border: 3px solid #574c46;
 }
 .szoveg
 {
-	color: #574c46;
+	color: #158FAD;
 	font-size: 15px;
 	padding: 10px;
 	
@@ -180,7 +182,7 @@ border: 3px solid #574c46;
 #gomb
 {
 	    color: white;
-    background-color: #574c46;
+    background-color: #158FAD;
     font-size: 20px;
     border-style: outset;
     border-radius: 10px;
@@ -205,7 +207,7 @@ border: 3px solid #574c46;
 .tartalom {
   
     padding: 5px;
-    color: #574c46;
+    color: #158FAD;
     background-color: #e4e4e4;
 }
 
@@ -222,7 +224,7 @@ border: 3px solid #574c46;
     padding: 10px;
     margin-left: 5px;
     font-size: 20px;
-    background-color: #cbbcb2;
+    background-color: white;
     color: white;
     font-weight: bold;
     border-radius: 5px;
@@ -238,7 +240,7 @@ text-align: center;
     margin-top: 10px;
 }
 legend {
-  background-color: #574c46;
+  background-color: #158FAD;
   color: white;
   padding: 5px 10px !important; 
 }
@@ -248,7 +250,7 @@ fieldset {
 }
 .hir
 {
-	 background-color: #574c46;
+	 background-color: #158FAD;
 	color: white;
   padding: 0 0 0 10px;
   font-size: 30px;
@@ -262,7 +264,7 @@ fieldset {
 .kiir
 {
 	    padding: 10px;
-    background-color: #574c46;
+    background-color: #158FAD;
     color: white;
     font-weight: bold;
 }
