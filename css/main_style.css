@@ -278,3 +278,42 @@ fieldset {
 table .ui-datepicker-calendar {
     display: none;
 }
+fieldset {
+    background-color: #e2e1df;
+  }
+  
+  legend {
+    background-color: #158FAD;
+    color: white;
+    padding: 5px 10px;
+  }
+  .gombi
+  {
+  
+          margin-left: 190px;
+      width: 400px;
+      background-color: #158FAD;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+  }
+  h2
+  {
+      text-align:center;
+      padding: 10px 0px;
+      
+      font-weight: 700;
+  }
+  
+  input {
+          width: 300px;
+      padding: 5px 30px;
+          margin: 10px 10px 10px 100px;
+  }
+
+  label {
+    display: inline-block;
+    width: 90px;
+	font-weight:bold;
+	    padding: 20px;
+  }
