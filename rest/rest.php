@@ -59,6 +59,11 @@ try {
                 $modositando .= ", nem = :nem";
                 $params[":nem"] = $data["nem"];
             }
+            $sql = "UPDATE jelentkezo set " . $modositando . " WHERE id=:id";
+            $sth = $dbh->prepare($sql);
+            $conemt = $sth->execute($params);
+            $eredmeny .= $conemt . " módositott sor. Azonosítója:" . $data["id"];
+
             if ($data['kepzes'] != "") {
                 $modositando .= ", kepzes = :kepzes";
                 $params[":kepzes"] = $data["kepzes"];
@@ -75,19 +80,16 @@ try {
             }
            
             $sql2 = "UPDATE jelentkezes set " . $modositando . " WHERE jelentkezoid=:id";
-            $sql = "UPDATE jelentkezo set " . $modositando . " WHERE id=:id";
            
             $sth2 = $dbh->prepare($sql2);
-          
            $conemt2 = $sth2->execute($params);
            var_dump($params);
-            $sth = $dbh->prepare($sql);
-            
-           $conemt = $sth->execute($params);
+          
         
     
            
-            $eredmeny .= $conemt . " módositott sor. Azonosítója:" . $data["id"];
+        
+            $eredmeny .= $conemt2 . " módositott sor. Azonosítója:" . $data["id"];
             break;
         case "DELETE":
             $data = array();
