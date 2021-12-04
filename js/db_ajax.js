@@ -36,15 +36,41 @@ class FelveteliHandler {
     }
 
     fill_nem() {
-
+        this.json_data.operation = "get_nem";
+        $.post(
+            "felveteli",
+            this.json_data,
+            function (data) {
+                data.forEach(nem => $(nemDataList).append("<option value='" + nem.nem + "'>"));
+            },
+            'json'
+        ).fail(function(xhr, status, error) {
+            // console.log(xhr);
+            // alert(error);
+        });
     }
-    fill_sorrend() {
 
+    fill_sorrend() {
+        this.json_data.operation = "get_sorrend";
+        $.post(
+            "felveteli",
+            this.json_data,
+            function (data) {
+                console.log(data);
+                data.forEach(sorrend => $(sorrendDataList).append("<option value='" + sorrend.sorrend + "'>"));
+            },
+            'json'
+        ).fail(function(xhr, status, error) {
+            console.log(xhr);
+            // alert(error);
+        });
     }
 }
 
 $(document).ready(function () {
-    let handler = new FelveteliHandler;
+    var handler = new FelveteliHandler;
     handler.fill_kepzes();
+    handler.fill_nem();
+    handler.fill_sorrend();
     // $("#statisztikabutton").click(handler.felveteli_statisztika_nem_alapjan());
 });

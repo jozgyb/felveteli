@@ -38,20 +38,51 @@ class Felveteli_Model
         }
     }
 
-    public function get_jelentkezes_json()
-    {
-        echo json_encode($this->jelentkezes);
-    }
+    // public function get_jelentkezes_json()
+    // {
+    //     $connection = Database::getConnection();
+    //     $sql = "SELECT  DISTINCT nev FROM kepzes;";
+    //     $stmt = $connection->query($sql);
+    //     $stmt->execute();
+    //     $kepzesek = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //     echo json_encode($kepzesek);
+    // }
 
     public function get_kepzes_json()
     {
-        echo json_encode($this->kepzes, JSON_UNESCAPED_UNICODE);
+        // echo json_encode($this->kepzes, JSON_UNESCAPED_UNICODE);
+        $connection = Database::getConnection();
+        $sql = "SELECT DISTINCT nev FROM kepzes;";
+        $stmt = $connection->query($sql);
+        $stmt->execute();
+        $kepzesek = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($kepzesek, JSON_UNESCAPED_UNICODE);
     }
 
-    public function get_jelentkezo_json()
+    public function get_nem_json()
     {
-        echo json_encode($this->jelentkezo);
+        $connection = Database::getConnection();
+        $sql = "SELECT DISTINCT nem FROM jelentkezo;";
+        $stmt = $connection->query($sql);
+        $stmt->execute();
+        $nemek = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($nemek, JSON_UNESCAPED_LINE_TERMINATORS);
     }
+
+    public function get_sorrend_json()
+    {
+        $connection = Database::getConnection();
+        $sql = "SELECT DISTINCT sorrend FROM jelentkezes;";
+        $stmt = $connection->query($sql);
+        $stmt->execute();
+        $sorrend = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($sorrend, JSON_UNESCAPED_LINE_TERMINATORS);
+    }
+
+    //     public function get_jelentkezo_json()
+    //     {
+    //         echo json_encode($this->jelentkezo);
+    //     }
 }
 
 class Kepzes
