@@ -1,27 +1,27 @@
 class FelveteliHandler {
     constructor() {
-        this.kepzes = $("#kepzesselect").val();
-        this.nem = $("#nemselect").val();
-        this.sorrend = $("#sorrendselect").val();
+        this.kepzes = $("#kepzes").val();
+        this.nem = $("#nem").val();
+        this.sorrend = $("#sorrend").val();
         this.json_data = {
             "operation": "",
             "kepzes": this.kepzes,
             "nem": this.nem,
-            "pontszam": this.sorrend
+            "sorrend": this.sorrend
         }
     }
-    // felveteli_statisztika_nem_alapjan() {
-    //     if (this.kepzes != "" && this.nem != "" && this.sorrend != "") {
-    //         // hány fiú vagy lány nyert felvételt első helyen xy képzésre
-    //         $.post(
-    //             "felveteli",
-    //             this.json_data,
-    //             function (data) {
-    //                 //kiirni az eredményt
-    //             }
-    //         );
-    //     }
-    // }
+    felveteli_statisztika_nem_alapjan() {
+        // hány fiú vagy lány nyert felvételt első helyen xy képzésre
+        this.json_data.operation = "get_felveteli_statisztika";
+        $.post(
+            "felveteli",
+            this.json_data,
+            function (data) {
+                $("#statisztikaResult").html(data);
+            },
+            'json'
+        );
+    }
 
     fill_kepzes() {
         this.json_data.operation = "get_kepzes";
@@ -44,7 +44,7 @@ class FelveteliHandler {
                 data.forEach(nem => $(nemDataList).append("<option value='" + nem.nem + "'>"));
             },
             'json'
-        ).fail(function(xhr, status, error) {
+        ).fail(function (xhr, status, error) {
             // console.log(xhr);
             // alert(error);
         });
@@ -60,7 +60,7 @@ class FelveteliHandler {
                 data.forEach(sorrend => $(sorrendDataList).append("<option value='" + sorrend.sorrend + "'>"));
             },
             'json'
-        ).fail(function(xhr, status, error) {
+        ).fail(function (xhr, status, error) {
             console.log(xhr);
             // alert(error);
         });
@@ -72,5 +72,5 @@ $(document).ready(function () {
     handler.fill_kepzes();
     handler.fill_nem();
     handler.fill_sorrend();
-    // $("#statisztikabutton").click(handler.felveteli_statisztika_nem_alapjan());
+    $("#statisztikabutton").click(function () { handler.felveteli_statisztika_nem_alapjan() });
 });

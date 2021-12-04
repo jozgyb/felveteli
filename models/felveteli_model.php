@@ -38,6 +38,16 @@ class Felveteli_Model
         }
     }
 
+    public function get_felveteli_statisztika($kepzes_id, $nem, $sorrend)
+    {
+        $connection = Database::getConnection();
+        // $sql = "SELECT COUNT(jelentkezes.id) as jelentkezok_szama, jelentkezes.szerzett, kepzes.minimum, jelentkezes.sorrend FROM jelentkezes INNER JOIN jelentkezo ON jelentkezo.id = jelentkezes.jelentkezoid INNER JOIN kepzes ON kepzes.id = jelentkezes.kepzesid GROUP BY jelentkezes.sorrend HAVING jelentkezes.szerzett >= kepzes.minimum;";
+        $sql = "SELECT COUNT(jelentkezes.d) as jelentkezok_szama, jelentkezes.szerzett, kepzes.minimum, jelentkezes.sorrend, jelentkezo.nem FROM jelentkezes INNER JOIN jelentkezo ON jelentkezo.id = jelentkezes.jelentkezoid INNER JOIN kepzes ON kepzes.id = jelentkezes.kepzesid GROUP BY jelentkezes.sorrend HAVING jelentkezes.szerzett >= kepzes.minimum AND jelentkezo.nem like '{$nem}' AND jelentkezes.sorrend = {$sorrend} AND jelentkezes.kepzesid == {$kepzes_id};";
+        $stmt = $connection->query($sql);
+        $stmt->execute();
+        $felveteli = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // public function get_jelentkezes_json()
     // {
     //     $connection = Database::getConnection();

@@ -25,6 +25,9 @@
         </div>
     </div>
     <div class="row">
-        <button type="submit" class="btn btn-primary mx-auto col-lg-1 mt-3 mb-3">Keresés</button>
+        <button id="statisztikabutton" class="btn btn-primary mx-auto col-lg-1 mt-3 mb-3">Keresés</button>
+    </div>
+    <div class="row">
+        <p id="statisztikaResult"></p>
     </div>
 </form>
