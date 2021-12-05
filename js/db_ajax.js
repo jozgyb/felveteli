@@ -17,7 +17,6 @@ class FelveteliHandler {
             "felveteli",
             this.json_data,
             function (data) {
-                console.log(data);
                 let result = data[0];
                 let nem_string = (result.nem === 'f' ? 'fiú' : 'lány');
                 $("#statisztikaResult").text(`${result.jelentkezok_szama} ${nem_string} jelentkezett ${result.sorrend}. helyen a ${result.nev} szakra.`);

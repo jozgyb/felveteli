@@ -89,6 +89,17 @@ class Felveteli_Model
         echo json_encode($sorrend, JSON_UNESCAPED_LINE_TERMINATORS);
     }
 
+    public function get_graph_data_json()
+    {
+        $connection = Database::getConnection();
+        //felvételt nyert jelentkezők száma képzsenként
+        $sql = "SELECT COUNT(jelentkezes.id) as felvettek_szama, jelentkezes.szerzett, kepzes.nev as kepzes FROM jelentkezes INNER JOIN jelentkezo ON jelentkezo.id = jelentkezes.jelentkezoid INNER JOIN kepzes ON kepzes.id = jelentkezes.kepzesid WHERE jelentkezes.szerzett >= kepzes.minimum GROUP BY kepzes.nev;";
+        $stmt = $connection->query($sql);
+        $stmt->execute();
+        $graph_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($graph_data, JSON_UNESCAPED_UNICODE);
+    }
+
     //     public function get_jelentkezo_json()
     //     {
     //         echo json_encode($this->jelentkezo);

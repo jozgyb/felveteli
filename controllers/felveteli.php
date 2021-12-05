@@ -21,9 +21,13 @@ class Felveteli_Controller
         {
             $model->get_sorrend_json();
         }
-        elseif (isset($_POST['operation']) && $_POST['operation'] == 'get_felveteli_statisztika')
+        elseif (isset($_POST['operation']) && !empty($_POST['kepzes']) && !empty($_POST['nem']) && !empty($_POST['sorrend'])  && $_POST['operation'] == 'get_felveteli_statisztika')
         {
             $model->get_felveteli_statisztika($_POST['kepzes'], $_POST['nem'], $_POST["sorrend"]);
+        }
+        elseif (isset($_POST['operation']) && $_POST['operation'] == 'get_felveteli_statisztika')
+        {
+            $model->get_graph_data_json();
         }
         else
         {

@@ -31,3 +31,9 @@
         <p id="statisztikaResult"></p>
     </div>
 </form>
+<div class="row">
+    <div class="mt-3 col-lg-6 mx-auto">
+        <canvas id="felveteliChart"></canvas>
+    </div>
+</div>
+<script type="text/javascript" src="js/graph_handler.js"></script>
