@@ -13,14 +13,15 @@ if (isset($_POST['id'])) {
   if (
 
     empty($_POST['id']) && $_POST['nev'] != "" && $_POST['nem'] != ""
-    
+
   ) {
     $data = array(
       "nev" => $_POST["nev"], "nem" => $_POST["nem"]
- 
+
 
     );
     $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -54,7 +55,7 @@ if (isset($_POST['id'])) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($ch);
-  
+
     curl_close($ch);
   }
 
@@ -78,24 +79,31 @@ curl_close($ch);
 
 <body>
   <?= $result ?>
-  
+
   <br>
   <div class="belso">
-<div class="belep">
-  <form method="post" target="restful">
-  <fieldset>
-<legend>
-  <h2>Módosítás / Beszúrás</h2></legend>
-  <label for="id">  Id: <input type="text" name="id"></label><br>
-  <label for="nev">Jelentkező Név: <input type="text" name="nev" maxlength="45"> </label><br>
-  <label for="nem"> Nem: <input type="text" name="nem" maxlength="45"></label><br>
-    <input type="submit" class="kul" value="Küldés">
-    </fieldset>
-  </form>
-</div>
-  <h1 style="text-align: center;color: #158FAD;margin: 10px 0;">Jelentkezők</h1>
+    <div class="belep">
+      <form method="post" target="restful">
+        <fieldset>
+          <legend>
+            <h2>Módosítás / Beszúrás / Törlés</h2>
+          </legend>
+          <label for="id"> Id: <input type="text" name="id"></label><br>
+          <label for="nev">Jelentkező Név: <input type="text" name="nev" maxlength="45"> </label><br>
+          <label for="nem"> Nem: <input type="text" name="nem" maxlength="45"></label><br>
+
+          <input type="submit" class="kul" value="Küldés">
+        </fieldset>
+      </form>
+    </div>
+    <p style="color: #158FAD;">Ha id kívül minden adatot megad beszúrás történik.</p>
+    <p style="color: #158FAD;">Ha megadja az id és egy másik adatot módosítás történik.</p>
+    <p style="color: #158FAD;">Ha csak az id adja meg töröl.</p>
+    <h1 style="text-align: center;color: #158FAD;margin: 10px 0;">Jelentkezők</h1>
+    <?= $tabla ?>
  <?= $tabla ?> 
- </div>
+    <?= $tabla ?>
+  </div>
 
 </body>
 
