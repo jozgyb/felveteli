@@ -1,7 +1,7 @@
 class GraphHandler {
     constructor() {
         this.json_data = {
-            "operation": "get_graph_data"
+            "operation": ""
         }
     }
 
@@ -29,7 +29,7 @@ class GraphHandler {
     }
 
     get_graph_data() {
-        this.json_data.operation = "get_felveteli_statisztika";
+        this.json_data.operation = "get_graph_data_ajax";
         var self = this;
         $.post(
             "felveteli",
