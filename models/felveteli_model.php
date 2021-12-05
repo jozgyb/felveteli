@@ -45,7 +45,12 @@ class Felveteli_Model
         $stmt = $connection->query($sql);
         $stmt->execute();
         $statisztika = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($statisztika, JSON_UNESCAPED_UNICODE);
+        return $statisztika;
+    }
+
+    public function get_felveteli_statisztika_json($kepzes_id, $nem, $sorrend)
+    {
+        echo json_encode($this->get_felveteli_statisztika($kepzes_id, $nem, $sorrend), JSON_UNESCAPED_UNICODE);
     }
 
     // public function get_jelentkezes_json()

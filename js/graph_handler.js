@@ -19,7 +19,17 @@ class GraphHandler {
         const config = {
             type: 'bar',
             data: data,
-            options: {}
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Középiskolai jelentkezések száma válaszott szakok alapján'
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
         };
 
         const myChart = new Chart(

@@ -1,6 +1,13 @@
 <script type="text/javascript" src="js/db_ajax.js"></script>
 <form id="ajaxForm" onsubmit="return false;">
     <div class="row">
+        <div class="col-lg-4 mx-auto">
+            <p class="h3">
+                Jelentkezett tanulók számának lekérdezése
+            </p>
+        </div>
+    </div>
+    <div class="row">
         <div class="form-floating mt-3 col-lg-2 mx-auto">
             <input class="form-control" list="kepzesDataList" id="kepzes" name="kepzes">
             <label class="form-label" for="kepzes">Képzés:</label>
@@ -28,7 +35,12 @@
         <button id="statisztikabutton" type="submit" class="btn btn-primary mx-auto col-lg-1 mt-3 mb-3">Keresés</button>
     </div>
     <div class="row">
-        <p id="statisztikaResult"></p>
+        <button id="pdfbutton" type="submit" class="btn btn-secondary mx-auto col-lg-1 mt-3 mb-3">Eredmény PDF</button>
+    </div>
+    <div class="row">
+        <div class="mt-3 col-lg-2 mx-auto">
+            <p id="statisztikaResult"></p>
+        </div>
     </div>
 </form>
 <div class="row">

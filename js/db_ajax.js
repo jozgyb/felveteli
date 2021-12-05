@@ -12,7 +12,7 @@ class FelveteliHandler {
     }
     felveteli_statisztika_nem_alapjan() {
         // hány fiú vagy lány jelentkezett X. helyen az adott képzésre
-        this.json_data.operation = "get_felveteli_statisztika";
+        this.json_data.operation = "get_felveteli_statisztika_json";
         $.post(
             "felveteli",
             this.json_data,
@@ -22,7 +22,10 @@ class FelveteliHandler {
                 $("#statisztikaResult").text(`${result.jelentkezok_szama} ${nem_string} jelentkezett ${result.sorrend}. helyen a ${result.nev} szakra.`);
             },
             'json'
-        );
+        ).fail(function (xhr, status, error) {
+            // console.log(xhr);
+            // alert(error);
+        });
     }
 
     fill_kepzes() {
