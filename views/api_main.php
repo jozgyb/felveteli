@@ -2,7 +2,7 @@
 <?php
  $url = "https://gorest.co.in/public/v1/posts?access-token=b0510476761951d379e4f092784758d5ea6b432000616b7f2a2cfe5c23822e4c";
 
-  if(isset($_POST['buttonGet'])) { 
+  if(isset($_POST['gomget'])) { 
 
 
 
@@ -14,7 +14,7 @@
 }
 
 
-   if(isset($_POST['buttonPost'])) {   
+   if(isset($_POST['gombpost'])) {   
 
 
  $adatok = array(
@@ -51,7 +51,7 @@
 
 
 
- if(isset($_POST['buttonPut'])) {  
+ if(isset($_POST['gombput'])) {  
  	
 
 
@@ -68,7 +68,7 @@
 }
 
 
- if(isset($_POST['buttonDelete'])) { 
+ if(isset($_POST['gomtorles'])) { 
 
 
  $ch = curl_init($url);
@@ -85,14 +85,14 @@
 ?>
 
     <form method="post">
-        <input type="submit" name="buttonGet"
+        <input type="submit" name="gomget"
                 value="Lekérdez"/>
                   <form method="post">
-        <input type="submit" name="buttonPost"
+        <input type="submit" name="gombpost"
                 value="Beszúrás"/>
                          <form method="post">
-        <input type="submit" name="buttonPut"
+        <input type="submit" name="gombput"
                 value="Módosítás"/>
                          <form method="post">
-        <input type="submit" name="buttonDelete"
+        <input type="submit" name="gomtorles"
                 value="Törlés"/>
