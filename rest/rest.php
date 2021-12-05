@@ -1,12 +1,8 @@
 <?php
 $eredmeny = "";
+require_once('../includes/database.inc.php');
 try {
-    $dbh = new PDO(
-        'mysql:host=localhost;dbname=web2',
-        'root',
-        '',
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-    );
+    $dbh = Database::getConnection();
     $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
     switch ($_SERVER['REQUEST_METHOD']) {
         case "GET":
@@ -34,12 +30,12 @@ try {
             break;
         case "POST":
             $i = 901;
-            $leker="";
+            $leker = "";
             $sql = "INSERT INTO jelentkezo values (0, :nev, :nem)";
-         
+
             $sth = $dbh->prepare($sql);
             $conemt = $sth->execute(array(":nev" => $_POST["nev"], ":nem" => $_POST["nem"]));
-         
+
             $newid = $dbh->lastInsertId();
             $eredmeny .= $conemt . " beszúrt sor: " . $newid;
             $i++;
@@ -70,10 +66,10 @@ try {
             $incoming = file_get_contents("php://input");
             parse_str($incoming, $data);
             $sql =  "DELETE FROM jelentkezo WHERE id=:id";
-          
+
             $sth = $dbh->prepare($sql);
             $conemt = $sth->execute(array(":id" => $data["id"]));
-          
+
 
             $eredmeny .= $conemt . " sor törölve. Azonosítója:" . $data["id"];
             break;
