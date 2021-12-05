@@ -11,13 +11,16 @@ class FelveteliHandler {
         }
     }
     felveteli_statisztika_nem_alapjan() {
-        // hány fiú vagy lány nyert felvételt első helyen xy képzésre
+        // hány fiú vagy lány jelentkezett X. helyen az adott képzésre
         this.json_data.operation = "get_felveteli_statisztika";
         $.post(
             "felveteli",
             this.json_data,
             function (data) {
-                $("#statisztikaResult").html(data);
+                console.log(data);
+                let result = data[0];
+                let nem_string = (result.nem === 'f' ? 'fiú' : 'lány');
+                $("#statisztikaResult").text(`${result.jelentkezok_szama} ${nem_string} jelentkezett ${result.sorrend}. helyen a ${result.nev} szakra.`);
             },
             'json'
         );
@@ -56,12 +59,11 @@ class FelveteliHandler {
             "felveteli",
             this.json_data,
             function (data) {
-                console.log(data);
                 data.forEach(sorrend => $(sorrendDataList).append("<option value='" + sorrend.sorrend + "'>"));
             },
             'json'
         ).fail(function (xhr, status, error) {
-            console.log(xhr);
+            // console.log(xhr);
             // alert(error);
         });
     }
@@ -72,5 +74,11 @@ $(document).ready(function () {
     handler.fill_kepzes();
     handler.fill_nem();
     handler.fill_sorrend();
-    $("#statisztikabutton").click(function () { handler.felveteli_statisztika_nem_alapjan() });
+
+    $("#statisztikabutton").click(function () {
+        handler.json_data.kepzes = $("#kepzes").val();
+        handler.json_data.nem = $("#nem").val();
+        handler.json_data.sorrend = $("#sorrend").val();
+        handler.felveteli_statisztika_nem_alapjan();
+    });
 });

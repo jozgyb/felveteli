@@ -1,5 +1,5 @@
-<script type="text/javascript" src="../../felveteli/js/db_ajax.js"></script>
-<form method="post" id="ajaxForm">
+<script type="text/javascript" src="js/db_ajax.js"></script>
+<form id="ajaxForm" onsubmit="return false;">
     <div class="row">
         <div class="form-floating mt-3 col-lg-2 mx-auto">
             <input class="form-control" list="kepzesDataList" id="kepzes" name="kepzes">
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="row">
-        <button id="statisztikabutton" class="btn btn-primary mx-auto col-lg-1 mt-3 mb-3">Keresés</button>
+        <button id="statisztikabutton" type="submit" class="btn btn-primary mx-auto col-lg-1 mt-3 mb-3">Keresés</button>
     </div>
     <div class="row">
         <p id="statisztikaResult"></p>
