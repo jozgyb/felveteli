@@ -11,9 +11,9 @@ try {
     switch ($_SERVER['REQUEST_METHOD']) {
         case "GET":
             $eredmeny = array();
-            $sql = "SELECT jelentkezo.id ,jelentkezes.jelentkezoid as id2,jelentkezo.nev as nev, jelentkezo.nem , kepzes.nev as kepzes, jelentkezes.sorrend , jelentkezes.szerzett FROM (( jelentkezo INNER JOIN jelentkezes ON jelentkezo.id = jelentkezes.id ) INNER JOIN kepzes ON jelentkezes.kepzesid = kepzes.id) GROUP BY jelentkezes.id;";
+            $sql = "SELECT  jelentkezo.id as id, jelentkezo.nev as nev, jelentkezo.nem as nem FROM  jelentkezo ORDER BY jelentkezo.id desc";
             $sth = $dbh->query($sql);
-            echo "<table style=\"border-collapse: collapse;\"><tr><th>Jelentkező név</th><th>Nem</th><th>Jelentkezés</th><th>Jelentkezés</th></tr>";
+            echo "<table class='tabla' style=\"border-collapse: collapse;\"><tr><th style='text-align: center;'>Jelentkező id</th><th style='text-align: center;'>Jelentkező Név</th><th style='text-align: center;'>Jelentkező Nem</th></tr>";
             echo "<tr>";
             while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
 
@@ -34,12 +34,12 @@ try {
             break;
         case "POST":
             $i = 901;
+            $leker="";
             $sql = "INSERT INTO jelentkezo values (0, :nev, :nem)";
-            $sql2 = "INSERT INTO jelentkezes values (0,:$i,:kepzes, :sorrend, :szerzett)";
+         
             $sth = $dbh->prepare($sql);
             $conemt = $sth->execute(array(":nev" => $_POST["nev"], ":nem" => $_POST["nem"]));
-            $sth2 = $dbh->prepare($sql2);
-            $conemt2 = $sth2->execute(array(":id" => $_POST["id"], ":kepzes" => $_POST["kepzes"], ":sorrend" => $_POST["sorrend"], ":szerzett" => $_POST["szerzett"]));
+         
             $newid = $dbh->lastInsertId();
             $eredmeny .= $conemt . " beszúrt sor: " . $newid;
             $i++;
@@ -50,7 +50,7 @@ try {
             parse_str($incoming, $data);
             $modositando = "id=id";
             $params = array(":id" => $data["id"]);
-        
+
             if ($data['nev'] != "") {
                 $modositando .= ", nev = :nev";
                 $params[":nev"] = $data["nev"];
@@ -64,43 +64,16 @@ try {
             $conemt = $sth->execute($params);
             $eredmeny .= $conemt . " módositott sor. Azonosítója:" . $data["id"];
 
-            if ($data['kepzes'] != "") {
-                $modositando .= ", kepzes = :kepzes";
-                $params[":kepzes"] = $data["kepzes"];
-            }
-            
-            if ($data['sorrend'] != "") {
-                $modositando .= ", sorrend = :sorrend";
-                $params[":sorrend"] = $data["sorrend"];
-           }
-  
-            if ($data['szerzett'] != "") {
-                $modositando .= ", szerzett = :szerzett";
-                $params[":szerzett"] = $data["szerzett"];
-            }
-           
-            $sql2 = "UPDATE jelentkezes set " . $modositando . " WHERE jelentkezoid=:id";
-           
-            $sth2 = $dbh->prepare($sql2);
-           $conemt2 = $sth2->execute($params);
-           var_dump($params);
-          
-        
-    
-           
-        
-            $eredmeny .= $conemt2 . " módositott sor. Azonosítója:" . $data["id"];
             break;
         case "DELETE":
             $data = array();
             $incoming = file_get_contents("php://input");
             parse_str($incoming, $data);
-            $sql =  "DELETE FROM jelentkezes WHERE jelentkezoid=:id";
-            $sql2 =  "DELETE FROM jelentkezo WHERE id=:id";
+            $sql =  "DELETE FROM jelentkezo WHERE id=:id";
+          
             $sth = $dbh->prepare($sql);
             $conemt = $sth->execute(array(":id" => $data["id"]));
-            $sth2 = $dbh->prepare($sql2);
-            $conemt2 = $sth2->execute(array(":id" => $data["id"]));
+          
 
             $eredmeny .= $conemt . " sor törölve. Azonosítója:" . $data["id"];
             break;
