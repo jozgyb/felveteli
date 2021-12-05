@@ -75,12 +75,12 @@ class Felveteli_Controller
         <html>
             <head></head>
             <body>
-                {$statisztika}
+                {$statisztika[0]['jelentkezok_szama']}
             </body>
         </html>
         ";
 
         $pdf->writeHTML($html, true, false, true, false, '');
-        $pdf->Output('statisztika.pdf', 'I');
+        $pdf->Output('statisztika.pdf', 'F');
     }
 }

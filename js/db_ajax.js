@@ -28,6 +28,21 @@ class FelveteliHandler {
         });
     }
 
+    create_pdf()
+    {
+        this.json_data.operation = "print_pdf";
+        $.post(
+            "felveteli",
+            this.json_data,
+            function (data) {
+            },
+            'json'
+        ).fail(function (xhr, status, error) {
+            // console.log(xhr);
+            // alert(error);
+        });
+    }
+
     fill_kepzes() {
         this.json_data.operation = "get_kepzes";
         $.post(
@@ -82,5 +97,12 @@ $(document).ready(function () {
         handler.json_data.nem = $("#nem").val();
         handler.json_data.sorrend = $("#sorrend").val();
         handler.felveteli_statisztika_nem_alapjan();
+    });
+
+    $("#pdfbutton").click(function () {
+        handler.json_data.kepzes = $("#kepzes").val();
+        handler.json_data.nem = $("#nem").val();
+        handler.json_data.sorrend = $("#sorrend").val();
+        handler.create_pdf();
     });
 });
